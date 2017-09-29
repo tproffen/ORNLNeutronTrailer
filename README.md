@@ -11,7 +11,7 @@ recommended browser is [Google Chrome](https://www.google.com/chrome/browser/des
 ## Local Installation
 
 In cases where Internet access is not available, the demo needs to be run locally. It is possible
-to just open `DiffractionCamera.html` in a local brower and all will work. However, 
+to just open `DiffractionCamera.html` in a local browser and all will work. However, 
 depending on security setting and the web browser, the camera will not work when the file is loaded 
 locally. If no Internet access is available, run a simple webserver by open a command prompt and 
 running the command:
