@@ -1,9 +1,19 @@
 # Diffraction Demo
 
 These are the scripts needed to run the diffraction demonstration as part of the 
-Neutron Trailer as part of the [ORNL Travelling Science Fair](https://orise.orau.gov/ornl-science-fair/). 
+Neutron Trailer as part of the [ORNL Travelling Science Fair](https://orise.orau.gov/ornl-science-fair/).
 
-Depending on security setting and the web browser, the camera will not work when the file is loaded 
+## Internet version
+
+If Internet is available, the demo can simple we run by visiting [https://tproffen.github.io/ORNLNeutronTrailer/DiffractionCamera.html]
+(https://tproffen.github.io/ORNLNeutronTrailer/DiffractionCamera.html). The recommended browser is [https://www.google.com/chrome/browser/desktop/index.html]
+(Chrome). Press `F11` for full screen mode.
+
+## Local Installation
+
+In cases where Internet access is not available, the demo needs to be run locally. It is possible
+to just open `DiffractionCamera.html` in a local brower and all will work. However, 
+depending on security setting and the web browser, the camera will not work when the file is loaded 
 locally. If no Internet access is available, run a simple webserver by open a command prompt and 
 running the command:
 
