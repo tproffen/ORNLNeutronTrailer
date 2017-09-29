@@ -12,35 +12,16 @@
 </head>
 
 <body>
-    <table>
-	<tr>
-		<th>Scattering Data</th>
-		<th>Sample</th>
-	</tr>
-	
-	<tr><td rowspan="4" id="canvasArea" class="canvas" align="center">
-			<canvas id="canvas">Canvas not supported</canvas>
+    <table align="center">	
+	<tr><td align="center">
+			<canvas id="scattering">Canvas not supported</canvas>
 		</td>
 	
-		<td align="center">
-			<canvas id="sampleArea">Canvas not supported</canvas>
-		</td>
-	</tr>
-	
-	<tr><th>Sample Preview</th></tr>
-	
-	<tr>
-		<td id="previewArea" align="center" width="50%"> 
+		<td align="center" width="40%">
 			<video id="video" name="video" autoplay width="256" height="256"></video>
+			<p id="message">READY<p>
 		</td>
 	</tr>
-
-	<tr><td>
-			<input type="button" value="Start Experiment" id="snap">
-		</td>
-	</tr>
-	
-
 	</table>  
   
   <script src="scripts/FourierCamera.js"></script>

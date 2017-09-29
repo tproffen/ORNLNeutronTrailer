@@ -1,11 +1,7 @@
 'use strict';
 
-var snapButton = document.getElementById('snap');
-var canvas = document.getElementById('canvas');
-var sample = document.getElementById('sampleArea');
-
+var canvas = document.getElementById('scattering');
 var context = canvas.getContext('2d');
-var sampleContext = sample.getContext('2d');
 
 // This is the capture size of the camera
 
@@ -33,12 +29,16 @@ function setup () {
 	
 	canvas.height=height; 
 	canvas.width=width;
-	sample.height=height/2;
-	sample.width=width/2;
 	determineSizes();
 
-	snapButton.addEventListener("click", snapImage, false);
 	window.addEventListener("resize", determineSizes, false);
+}
+
+function determineSizes () {
+	
+	var newHeight=window.innerHeight - 175;
+	canvas.style.width=newHeight + 'px';
+	canvas.style.height=newHeight + 'px';
 }
 
 function connectStream() {
@@ -82,25 +82,7 @@ function fourierTransform () {
 	FFT.fft2d(ampReal, ampImag); 					// calculate the 2D FFT
     FrequencyFilter.swap(ampReal, ampImag); 		// origin in the middle
 	SpectrumViewer.render(ampReal, ampImag, true);	// render the result
-	sampleContext.drawImage(videoElement, 0, 0, width/2, height/2);
-}
-
-function determineSizes () {
-	
-	var padW=width/2+20;
-	var padH=100;
-	
-	var newWidth=window.innerWidth-padW;
-	var newHeight=height*(newWidth/width)+1;
-	
-	if (newHeight>(window.innerHeight-padH)) {
-		newHeight=window.innerHeight-padH;
-		newWidth=width*(newHeight/height)+1;
-	}
-	canvas.style.width=newWidth + 'px';
-	canvas.style.height=newHeight + 'px';
-	sample.style.width=newWidth/2 + 'px';
-	sample.style.height=newHeight/2 + 'px';
+	context.drawImage(videoElement, 0, 0, width/4, height/4);
 }
 
 function handleError(error) {
