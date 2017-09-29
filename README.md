@@ -5,9 +5,9 @@ Neutron Trailer as part of the [ORNL Travelling Science Fair](https://orise.orau
 
 ## Internet version
 
-If Internet is available, the demo can simple we run by visiting [https://tproffen.github.io/ORNLNeutronTrailer/DiffractionCamera.html]
-(https://tproffen.github.io/ORNLNeutronTrailer/DiffractionCamera.html). The recommended browser is [https://www.google.com/chrome/browser/desktop/index.html]
-(Chrome). Press `F11` for full screen mode.
+If Internet is available, the demo can simple we run by visiting [this page]
+(https://tproffen.github.io/ORNLNeutronTrailer/DiffractionCamera.html). The recommended browser is [Google Chrome]
+(https://www.google.com/chrome/browser/desktop/index.html). Press `F11` for full screen mode.
 
 ## Local Installation
 
