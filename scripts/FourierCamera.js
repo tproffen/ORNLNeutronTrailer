@@ -87,8 +87,8 @@ function fourierTransform () {
 
 function determineSizes () {
 	
-	var padW=width+20;
-	var padH=200;
+	var padW=width/2+20;
+	var padH=100;
 	
 	var newWidth=window.innerWidth-padW;
 	var newHeight=height*(newWidth/width)+1;

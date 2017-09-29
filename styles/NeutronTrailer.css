@@ -31,7 +31,7 @@ hr {
 tr, td, th {
 	padding: 5px;
 	margin: 5px;
-	vertical-align: top;
+	vertical-align: middle;
 	border: 1px solid #999;
 	background-color: #EEEEEE;
 	font-size: 100%;
