@@ -12,16 +12,20 @@
 </head>
 
 <body>
-    <table align="center">	
-	<tr><td align="center">
+    <table align="center" border="0">	
+	<tr><td align="center" width="60%">
 			<canvas id="scattering">Canvas not supported</canvas>
 		</td>
 	
-		<td align="center" width="40%">
+		<td align="center">
 			<video id="video" name="video" autoplay width="256" height="256"></video>
-			<p id="message">READY<p>
+			<div id="message">BEAM<br>OFF</div>
 		</td>
 	</tr>
+	
+	<tr><td colspan="2" align="center">
+	    <div id="footer">Experiment #1</div>
+	</td></tr>
 	</table>  
   
   <script src="scripts/FourierCamera.js"></script>

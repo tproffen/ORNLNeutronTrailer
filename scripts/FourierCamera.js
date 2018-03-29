@@ -1,6 +1,7 @@
 'use strict';
 
 var message = document.getElementById('message');
+var footer = document.getElementById('footer');
 var canvas = document.getElementById('scattering');
 var context = canvas.getContext('2d');
 
@@ -13,6 +14,7 @@ var height=width;
 
 var clockCount=0;
 var countTimer=0;
+var expNumber=1;
 
 var videoElement = document.getElementById('video');
 navigator.mediaDevices.enumerateDevices().then(connectStream).then(setup).catch(handleError);	
@@ -43,19 +45,22 @@ function expose () {
 	
 	clockCount=2.5;
 	blankCanvas("red");
-	message.innerHTML = "<font color=\"#FF0000\">BEAM ON</font>";
+	message.innerHTML = "<font color=\"#FF0000\">BEAM<br>ON</font>";
 	countTimer = setInterval(countDown,500);
 }
 
 function countDown () {
 
 	clockCount = clockCount-0.5;
-	message.innerHTML = "Aquiring data<br>" + clockCount.toFixed(1) + " s";
+	message.innerHTML = "<font color=\"#FFFF00\">Aquiring data<br>" + clockCount.toFixed(1) + " s</font>";
 	
 	if (clockCount<=0) {
 		clearInterval(countTimer);
-		message.innerHTML = "<font color=\"#00FF00\">BEAM OFF</font>";
+		message.innerHTML = "<font color=\"#00FF00\">BEAM<br>OFF</font>";
 		snapImage();
+		
+		expNumber++;
+		footer.innerHTML = "Experiment #" + expNumber;
 	}
 }
 
@@ -63,17 +68,8 @@ function setup () {
 	
 	canvas.height=height; 
 	canvas.width=width;
-	determineSizes();
-	blankCanvas("green");
-
-	window.addEventListener("resize", determineSizes, false);
-}
-
-function determineSizes () {
 	
-	var newHeight=window.innerHeight - 175;
-	canvas.style.width=newHeight + 'px';
-	canvas.style.height=newHeight + 'px';
+	blankCanvas("green");
 }
 
 function connectStream() {
