@@ -12,6 +12,14 @@ table tr td {
 	padding: 75px;
 }
 
+#scattering {
+	filter: contrast(200%);
+}
+
+#video {
+	filter: contrast(200%);
+}
+
 #message {
 	text-align: center;
 	font-size: 400%;

@@ -41,18 +41,18 @@ function blankCanvas (color){
 
 function expose () {
 	
-	clockCount=3;
+	clockCount=2.5;
 	blankCanvas("red");
 	message.innerHTML = "<font color=\"#FF0000\">BEAM ON</font>";
-	countTimer = setInterval(countDown,1000);
+	countTimer = setInterval(countDown,500);
 }
 
 function countDown () {
 
-	message.innerHTML = "Counting: " + clockCount + " s";
-	clockCount = clockCount-1;
+	clockCount = clockCount-0.5;
+	message.innerHTML = "Aquiring data<br>" + clockCount.toFixed(1) + " s";
 	
-	if (clockCount===0) {
+	if (clockCount<=0) {
 		clearInterval(countTimer);
 		message.innerHTML = "<font color=\"#00FF00\">BEAM OFF</font>";
 		snapImage();
