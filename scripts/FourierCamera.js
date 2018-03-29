@@ -70,6 +70,20 @@ function setup () {
 	canvas.width=width;
 	
 	blankCanvas("green");
+	readValues();
+	
+	window.addEventListener("unload", writeValues, false);
+}
+
+function writeValues () {
+	
+	setCookie('expNumber', expNumber);
+}
+
+function readValues () {
+
+    var val;
+	if (val=getCookie('expNumber')) {expNumber = val}
 }
 
 function connectStream() {
