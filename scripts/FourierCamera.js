@@ -1,5 +1,6 @@
 'use strict';
 
+var message = document.getElementById('message');
 var canvas = document.getElementById('scattering');
 var context = canvas.getContext('2d');
 
@@ -7,6 +8,11 @@ var context = canvas.getContext('2d');
 
 var width=512;
 var height=width;
+
+// Countdown timer 
+
+var clockCount=0;
+var countTimer=0;
 
 var videoElement = document.getElementById('video');
 navigator.mediaDevices.enumerateDevices().then(connectStream).then(setup).catch(handleError);	
@@ -16,7 +22,7 @@ navigator.mediaDevices.enumerateDevices().then(connectStream).then(setup).catch(
 document.onkeydown = function (e) {
   e = e || window.event;
   switch (e.which || e.keyCode) {
-        case 13 : snapImage();   // Enter key
+        case 13 : if (clockCount===0) {expose();}   // Enter key
             break;
   }
 }
@@ -25,11 +31,40 @@ document.onkeydown = function (e) {
 // Functions below
 //================================================================================
 
+function blankCanvas (color){
+
+		context.beginPath();
+		context.rect(0,0,width,height);
+		context.fillStyle = color;
+		context.fill();
+}
+
+function expose () {
+	
+	clockCount=3;
+	blankCanvas("red");
+	message.innerHTML = "<font color=\"#FF0000\">BEAM ON</font>";
+	countTimer = setInterval(countDown,1000);
+}
+
+function countDown () {
+
+	message.innerHTML = "Counting: " + clockCount + " s";
+	clockCount = clockCount-1;
+	
+	if (clockCount===0) {
+		clearInterval(countTimer);
+		message.innerHTML = "<font color=\"#00FF00\">BEAM OFF</font>";
+		snapImage();
+	}
+}
+
 function setup () {
 	
 	canvas.height=height; 
 	canvas.width=width;
 	determineSizes();
+	blankCanvas("green");
 
 	window.addEventListener("resize", determineSizes, false);
 }
@@ -82,7 +117,7 @@ function fourierTransform () {
 	FFT.fft2d(ampReal, ampImag); 					// calculate the 2D FFT
     FrequencyFilter.swap(ampReal, ampImag); 		// origin in the middle
 	SpectrumViewer.render(ampReal, ampImag, true);	// render the result
-	context.drawImage(videoElement, 0, 0, width/4, height/4);
+	//context.drawImage(videoElement, 0, 0, width/4, height/4);
 }
 
 function handleError(error) {
