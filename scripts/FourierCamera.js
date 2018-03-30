@@ -33,6 +33,30 @@ document.onkeydown = function (e) {
 // Functions below
 //================================================================================
 
+function setCookie (cname, cvalue) {
+	
+    var d = new Date();
+    d.setTime(d.getTime() + (30*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+	
+}
+
+function getCookie (cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 function blankCanvas (color){
 
 		context.beginPath();
@@ -43,7 +67,7 @@ function blankCanvas (color){
 
 function expose () {
 	
-	clockCount=2.5;
+	clockCount=1.5;
 	blankCanvas("red");
 	message.innerHTML = "<font color=\"#FF0000\">BEAM<br>ON</font>";
 	countTimer = setInterval(countDown,500);
@@ -52,7 +76,7 @@ function expose () {
 function countDown () {
 
 	clockCount = clockCount-0.5;
-	message.innerHTML = "<font color=\"#FFFF00\">Aquiring data<br>" + clockCount.toFixed(1) + " s</font>";
+	message.innerHTML = "<font color=\"#FFFF00\">Acquiring data<br>" + clockCount.toFixed(1) + " s</font>";
 	
 	if (clockCount<=0) {
 		clearInterval(countTimer);
@@ -72,7 +96,7 @@ function setup () {
 	blankCanvas("green");
 	readValues();
 	
-	window.addEventListener("unload", writeValues, false);
+	footer.innerHTML = "Experiment #" + expNumber;
 }
 
 function writeValues () {
@@ -103,6 +127,7 @@ function snapImage () {
 	videoElement.pause();
 	fourierTransform();
 	videoElement.play();
+	writeValues();
 }
 
 function fourierTransform () {
@@ -127,9 +152,10 @@ function fourierTransform () {
 	FFT.fft2d(ampReal, ampImag); 					// calculate the 2D FFT
     FrequencyFilter.swap(ampReal, ampImag); 		// origin in the middle
 	SpectrumViewer.render(ampReal, ampImag, true);	// render the result
-	//context.drawImage(videoElement, 0, 0, width/4, height/4);
 }
 
 function handleError(error) {
 	console.log('navigator.getUserMedia error: ', error);
 }
+
+
