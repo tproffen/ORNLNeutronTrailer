@@ -1,5 +1,6 @@
 'use strict';
 
+var screen = document.getElementById('screen');
 var message = document.getElementById('message');
 var footer = document.getElementById('footer');
 var canvas = document.getElementById('scattering');
