@@ -13,7 +13,8 @@
 </head>
 
 <body>
-    <table align="center" border="0">	
+<div id="container" onclick="expose();">
+    <table align="center" border="0" class="container">	
 	<tr><td align="center" width="60%">
 			<canvas id="scattering">Canvas not supported</canvas>
 		</td>
@@ -21,6 +22,8 @@
 		<td align="center">
 			<video id="video" name="video" autoplay width="256" height="256"></video>
 			<div id="message">BEAM<br>OFF</div>
+			<div id="helptext">Click the screen, press ENTER or
+			                   Button to start measurement.</div>
 		</td>
 	</tr>
 	
@@ -28,6 +31,7 @@
 	    <div id="footer">Experiment #1</div>
 	</td></tr>
 	</table>  
-  <script src="scripts/FourierCamera.js"></script>
+</div>
+<script src="scripts/FourierCamera.js"></script>
 </body>
 </html>
