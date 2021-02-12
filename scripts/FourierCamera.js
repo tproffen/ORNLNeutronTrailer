@@ -16,7 +16,9 @@ var height=width;
 var clockCount=0;
 var countTimer=0;
 var expNumber=1;
+var sample=0; 
 
+var imageElement = document.getElementById('image');
 var videoElement = document.getElementById('video');
 navigator.mediaDevices.enumerateDevices().then(connectStream).then(setup).catch(handleError);	
 
@@ -27,6 +29,8 @@ document.onkeydown = function (e) {
   switch (e.which || e.keyCode) {
         case 13 : if (clockCount===0) {expose();}   // Enter key
             break;
+		case 83 : changeSample();
+			break;
   }
 }
 
@@ -124,11 +128,38 @@ function connectStream() {
 
 function snapImage () {
 	
-	context.drawImage(videoElement, 0, 0, width, height);
-	videoElement.pause();
-	fourierTransform();
-	videoElement.play();
-	writeValues();
+	if(sample > 0) {
+		context.drawImage(imageElement, 0, 0, width, height);
+		fourierTransform();
+		writeValues();
+	} else {
+		context.drawImage(videoElement, 0, 0, width, height);
+		videoElement.pause();
+		fourierTransform();
+		videoElement.play();
+		writeValues();
+	}
+}
+
+function changeSample () {
+
+	var samples = ["Images/Samples/GratingNarrow.jpg",
+	               "Images/Samples/GratingWide.jpg",
+	               "Images/Samples/Crystal.jpg",
+	               "Images/Samples/Disordered.jpg",
+	               "Images/Samples/Powder.jpg"];
+				   
+	sample++;
+	if (sample > samples.length) {sample = 0};
+	
+	if (sample == 0) {
+		imageElement.style.display="none";
+		videoElement.style.display="block";
+	} else {
+		imageElement.src = samples[sample-1];
+		videoElement.style.display="none";
+		imageElement.style.display="block";
+	}
 }
 
 function fourierTransform () {

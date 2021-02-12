@@ -1,3 +1,10 @@
+/* Small devices (landscape phones, 700px and up) */
+@media (max-width: 700px) {  
+  html {font-size:60%;} 
+}
+
+/*--------------------------------------------------*/
+
 body {
    	font-family: Arial, Helvetica, sans-serif;
 	font-size: 100%;
@@ -49,19 +56,28 @@ body {
 }
 
 .helptext {
-	font-size: 1.25rem;
+	font-size: 0.8rem;
 	text-align: center;
-	color: white;
-	padding-left: 20%;
-	padding-right: 20%;
-	padding-top: 5%;
+	color: #cccccc;
+	padding-top: 5px;
+}
+
+.sample {
+	filter: contrast(200%);
+	width: 35%;
+	margin-top: 19.5%;
+	margin-left: 34%;
+}
+
+#image {
+	display: none;
 }
 
 #footer {
 	color: white;
-	font-size: 200%;
+	font-size: 1.5rem;
 	text-align: center;
-	padding-top: 3%;
+	padding-top: 1%;
 }
 
 #message {
@@ -69,6 +85,7 @@ body {
 	font-size: 3rem;
 	font-weight: bold;
 	color: #00FF00;
+	padding-top: 5%;
 }
 
 #scattering {
@@ -77,11 +94,3 @@ body {
 	padding-left: 32.5%;
 	padding-top: 24%;
 }
-
-#video {
-	filter: contrast(200%);
-	width: 35%;
-	margin-top: 19.5%;
-	margin-left: 34%;
-}
-

@@ -13,35 +13,37 @@
 </head>
 
 <body>
-<div class="container main" onclick="expose();">
+<div class="container main">
 
 <div class="sixteen-by-nine aspect-ratio"></div>
 <div class="content">
-	<div class="container field-scat">
+	<div class="container field-scat" onclick="expose();">
 		<div class="square aspect-ratio"></div>
 		<div class="content">
  			<canvas id="scattering">Canvas not supported</canvas>
 		</div>
 	</div>
 	
-	<div class="container field-sample">
+	<div class="container field-sample" onclick="changeSample();">
 		<div class="four-by-three aspect-ratio"></div>
 		<div class="content">
-				<video id="video" name="video" autoplay></video>
+				<video class="sample" id="video" name="video" autoplay></video>
+				<img src="Images/Samples/Crystal.jpg" class="sample" id="image">
 		</div>
 	</div>
 	
 	<div class="container field-status">
 		<div class="content">
 			<div id="message">BEAM<br>OFF</div>
-			<div class="helptext">Click the screen, press ENTER or
-							Button to start measurement.</div>
 		</div>
 	</div>
 	
 	<div class="container field-footer">
 		<div class="content">
 		    <div id="footer">Experiment #1</div>
+			<div class="helptext">Click the data field or press ENTER or
+							Button to start measurement. Click the sample
+							field to change samples.</div>
 	</div>
   </div>
 </div>
