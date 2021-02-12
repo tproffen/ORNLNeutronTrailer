@@ -143,11 +143,11 @@ function snapImage () {
 
 function changeSample () {
 
-	var samples = ["Images/Samples/GratingNarrow.jpg",
-	               "Images/Samples/GratingWide.jpg",
-	               "Images/Samples/Crystal.jpg",
-	               "Images/Samples/Disordered.jpg",
-	               "Images/Samples/Powder.jpg"];
+	var samples = ["images/Samples/GratingNarrow.jpg",
+	               "images/Samples/GratingWide.jpg",
+	               "images/Samples/Crystal.jpg",
+	               "images/Samples/Disordered.jpg",
+	               "images/Samples/Powder.jpg"];
 				   
 	sample++;
 	if (sample > samples.length) {sample = 0};
