@@ -13,24 +13,37 @@
 </head>
 
 <body>
-<div id="container" onclick="expose();">
-    <table align="center" border="0" class="container">	
-	<tr><td align="center" width="60%">
-			<canvas id="scattering">Canvas not supported</canvas>
-		</td>
+<div class="container main" onclick="expose();">
+
+<div class="sixteen-by-nine aspect-ratio"></div>
+<div class="content">
+	<div class="container field-scat">
+		<div class="square aspect-ratio"></div>
+		<div class="content">
+ 			<canvas id="scattering">Canvas not supported</canvas>
+		</div>
+	</div>
 	
-		<td align="center">
-			<video id="video" name="video" autoplay width="256" height="256"></video>
+	<div class="container field-sample">
+		<div class="four-by-three aspect-ratio"></div>
+		<div class="content">
+				<video id="video" name="video" autoplay></video>
+		</div>
+	</div>
+	
+	<div class="container field-status">
+		<div class="content">
 			<div id="message">BEAM<br>OFF</div>
-			<div id="helptext">Click the screen, press ENTER or
-			                   Button to start measurement.</div>
-		</td>
-	</tr>
+			<div class="helptext">Click the screen, press ENTER or
+							Button to start measurement.</div>
+		</div>
+	</div>
 	
-	<tr><td colspan="2" align="center">
-	    <div id="footer">Experiment #1</div>
-	</td></tr>
-	</table>  
+	<div class="container field-footer">
+		<div class="content">
+		    <div id="footer">Experiment #1</div>
+	</div>
+  </div>
 </div>
 <script src="scripts/FourierCamera.js"></script>
 </body>
