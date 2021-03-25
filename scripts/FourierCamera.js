@@ -5,6 +5,7 @@ var message = document.getElementById('message');
 var footer = document.getElementById('footer');
 var canvas = document.getElementById('scattering');
 var context = canvas.getContext('2d');
+var sampleImg;
 
 // This is the capture size of the camera
 
@@ -27,9 +28,14 @@ navigator.mediaDevices.enumerateDevices().then(connectStream).then(setup).catch(
 document.onkeydown = function (e) {
   e = e || window.event;
   switch (e.which || e.keyCode) {
-        case 13 : if (clockCount===0) {expose();}   // Enter key
+        case 13 :  // Enter
+			if (clockCount===0) {expose();} 
             break;
-		case 83 : changeSample();
+		case 73 : // Key 'i'
+			saveImage();
+			break;
+		case 83 :  // Key 's'
+			changeSample();
 			break;
   }
 }
@@ -37,6 +43,23 @@ document.onkeydown = function (e) {
 //================================================================================
 // Functions below
 //================================================================================
+
+function saveImage() {
+  var a = document.createElement("a");
+  var sc = document.createElement("canvas");
+  var sctx = sc.getContext("2d");
+  var cssFilter = getComputedStyle(canvas).filter;
+  
+  sc.height = height; 
+  sc.width = 2*width;  
+  sctx.filter = cssFilter;
+  sctx.drawImage(canvas, 0, 0);
+  sctx.putImageData(sampleImg,width,0);
+  
+  a.download = "diffraction.png"; a.href = sc.toDataURL("image/png"); a.click();
+  a.remove(); sc.remove();
+  
+}
 
 function setCookie (cname, cvalue) {
 	
@@ -130,11 +153,13 @@ function snapImage () {
 	
 	if(sample > 0) {
 		context.drawImage(imageElement, 0, 0, width, height);
+		sampleImg = context.getImageData(0, 0, width, height);
 		fourierTransform();
 		writeValues();
 	} else {
 		context.drawImage(videoElement, 0, 0, width, height);
 		videoElement.pause();
+		sampleImg = context.getImageData(0, 0, width, height);
 		fourierTransform();
 		videoElement.play();
 		writeValues();
