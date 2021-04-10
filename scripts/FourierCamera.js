@@ -23,6 +23,13 @@ var imageElement = document.getElementById('image');
 var videoElement = document.getElementById('video');
 navigator.mediaDevices.enumerateDevices().then(connectStream).then(setup).catch(handleError);	
 
+// Build in sample images
+
+var samples = ["images/Samples/GratingNarrow.jpg",
+               "images/Samples/GratingWide.jpg",
+               "images/Samples/Crystal.jpg",
+               "images/Samples/Disordered.jpg",
+               "images/Samples/Powder.jpg"];				   
 // Mapping key strokes
 
 document.onkeydown = function (e) {
@@ -39,6 +46,12 @@ document.onkeydown = function (e) {
 			break;
   }
 }
+
+document.getElementById('inp').onchange = function(e) {
+   samples.push(URL.createObjectURL(this.files[0]));
+   sample = samples.length-1; 
+   changeSample();
+};
 
 //================================================================================
 // Functions below
@@ -168,12 +181,6 @@ function snapImage () {
 
 function changeSample () {
 
-	var samples = ["images/Samples/GratingNarrow.jpg",
-	               "images/Samples/GratingWide.jpg",
-	               "images/Samples/Crystal.jpg",
-	               "images/Samples/Disordered.jpg",
-	               "images/Samples/Powder.jpg"];
-				   
 	sample++;
 	if (sample > samples.length) {sample = 0};
 	
